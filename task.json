@@ -1,0 +1,68 @@
+{
+  "id": "9E9DB38A-B40B-4C13-B7F0-31031C894C22",
+  "name": "MakeCab",
+  "friendlyName": "Make Microsoft Cabinet files",
+  "description": "Creates a cabinet file using Microsoft's builtin makecab command",
+  "helpUrl": "https://docs.microsoft.com/en-us/previous-versions/bb417343(v=msdn.10)",
+  "helpMarkDown": "This utility creates a cabinet file to be used in your Azure Tasks.",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "runsOn": [
+    "Agent",
+    "DeploymentGroup"
+  ],
+  "author": "Kino Mondesir",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "releaseNotes": "First creation",
+  "demands": [],
+  "minimumAgentVersion": "1.91.0",
+  
+  "inputs": [
+    {
+      "name": "SourceFolder",
+      "type": "filePath",
+      "label": "Source Folder",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "The source folder that the copy pattern(s) will be run from.  Empty is the root of the repo.  Use [variables](https://go.microsoft.com/fwlink/?LinkID=550988) if files are not in the repo. Example: $(agent.builddirectory)"
+    },
+    {
+      "name": "TargetFolder",
+      "type": "string",
+      "label": "Target Folder",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Target folder or UNC path files will copy to. You can use [variables](http://go.microsoft.com/fwlink/?LinkID=550988). Example: $(build.artifactstagingdirectory)"
+    },
+    {
+      "name": "preserveTimestamp",
+      "type": "boolean",
+      "label": "Preserve Target Timestamp",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Using the original source file, preserve the target file timestamp.",
+      "groupName": "advanced"
+    }
+  ],
+  "instanceNameFormat": "Copy Files to: $(TargetFolder)",
+  "execution": {
+    "Node": {
+      "target": "copyfiles.js",
+      "argumentFormat": ""
+    }
+  },
+  "messages": {
+    "FoundNFiles": "found %d files",
+    "CleaningTargetFolder": "Cleaning target folder: %s",
+    "FileAlreadyExistAt": "File %s already exist at %s",
+    "CopyingTo": "Copying %s to %s",
+    "TargetIsDir": "Unable to copy file %s to %s. The target path already exists as a directory."
+  }
+}
