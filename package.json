@@ -1,0 +1,21 @@
+{
+  "name": "makecabinet",
+  "version": "1.0.0",
+  "description": "A utitlity for creating cabinet files within Azure DevOps environment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "utility",
+    "cabinet",
+    "file",
+    "archive"
+  ],
+  "author": "Kino Mondesir",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.6.8",
+    "@types/q": "^1.5.2"
+  }
+}
