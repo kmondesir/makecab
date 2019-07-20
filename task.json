@@ -26,7 +26,7 @@
   
   "inputs": [
     {
-      "name": "SourceFolder",
+      "name": "source",
       "type": "filePath",
       "label": "Source Folder",
       "defaultValue": "",
@@ -34,7 +34,7 @@
       "helpMarkDown": "The source folder that the copy pattern(s) will be run from.  Empty is the root of the repo.  Use [variables](https://go.microsoft.com/fwlink/?LinkID=550988) if files are not in the repo. Example: $(agent.builddirectory)"
     },
     {
-      "name": "TargetFolder",
+      "name": "destination",
       "type": "string",
       "label": "Target Folder",
       "defaultValue": "",
