@@ -30,7 +30,7 @@
       "type": "filePath",
       "label": "Source Folder",
       "defaultValue": "",
-      "required": false,
+      "required": true,
       "helpMarkDown": "The source folder that the copy pattern(s) will be run from.  Empty is the root of the repo.  Use [variables](https://go.microsoft.com/fwlink/?LinkID=550988) if files are not in the repo. Example: $(agent.builddirectory)"
     },
     {
@@ -38,31 +38,8 @@
       "type": "string",
       "label": "Target Folder",
       "defaultValue": "",
-      "required": true,
-      "helpMarkDown": "Target folder or UNC path files will copy to. You can use [variables](http://go.microsoft.com/fwlink/?LinkID=550988). Example: $(build.artifactstagingdirectory)"
-    },
-    {
-      "name": "preserveTimestamp",
-      "type": "boolean",
-      "label": "Preserve Target Timestamp",
-      "defaultValue": "false",
       "required": false,
-      "helpMarkDown": "Using the original source file, preserve the target file timestamp.",
-      "groupName": "advanced"
+      "helpMarkDown": "Target folder or UNC path files will copy to. You can use [variables](http://go.microsoft.com/fwlink/?LinkID=550988). Example: $(build.artifactstagingdirectory)"
     }
-  ],
-  "instanceNameFormat": "Copy Files to: $(TargetFolder)",
-  "execution": {
-    "Node": {
-      "target": "copyfiles.js",
-      "argumentFormat": ""
-    }
-  },
-  "messages": {
-    "FoundNFiles": "found %d files",
-    "CleaningTargetFolder": "Cleaning target folder: %s",
-    "FileAlreadyExistAt": "File %s already exist at %s",
-    "CopyingTo": "Copying %s to %s",
-    "TargetIsDir": "Unable to copy file %s to %s. The target path already exists as a directory."
-  }
+  ]
 }
