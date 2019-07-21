@@ -31,22 +31,22 @@
       "label": "Source Folder",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "The source folder that the copy pattern(s) will be run from.  Empty is the root of the repo.  Use [variables](https://go.microsoft.com/fwlink/?LinkID=550988) if files are not in the repo. Example: $(agent.builddirectory)"
+      "helpMarkDown": "The source with all items will be used to create the cabinet file. Use [variables](https://go.microsoft.com/fwlink/?LinkID=550988) if files are not in the repo. Example: $(agent.builddirectory)"
     },
     {
       "name": "destination",
-      "type": "string",
+      "type": "filePath",
       "label": "Target Folder",
       "defaultValue": "$(currentDirectory)",
       "required": false,
-      "helpMarkDown": "Target folder or UNC path files will copy to. You can use [variables](http://go.microsoft.com/fwlink/?LinkID=550988). Example: $(build.artifactstagingdirectory)"
+      "helpMarkDown": "Target folder to save the resulting cabinet file. You can use [variables](http://go.microsoft.com/fwlink/?LinkID=550988). Example: $(build.artifactstagingdirectory)"
     }
   ],
-  "instanceNameFormat": "Create cabinet file from $(Source)",
+  "instanceNameFormat": "Create cabinet file from $(Source) directory",
   "execution": {
     "PowerShell": {
-      "target": "$(currentDirectory)\\utility.ps1",
-      "argumentFormat": "-Source $(Source) -Destination $($Destination)",
+      "target": "$(currentDirectory)\\task.ps1",
+      "argumentFormat": "",
       "workingDirectory": "$(currentDirectory)"
     }
   }
