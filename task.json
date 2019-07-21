@@ -37,9 +37,17 @@
       "name": "destination",
       "type": "string",
       "label": "Target Folder",
-      "defaultValue": "",
+      "defaultValue": "$(currentDirectory)",
       "required": false,
       "helpMarkDown": "Target folder or UNC path files will copy to. You can use [variables](http://go.microsoft.com/fwlink/?LinkID=550988). Example: $(build.artifactstagingdirectory)"
     }
-  ]
+  ],
+  "instanceNameFormat": "Create cabinet file from $(Source)",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\utility.ps1",
+      "argumentFormat": "-Source $(Source) -Destination $($Destination)",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
 }
