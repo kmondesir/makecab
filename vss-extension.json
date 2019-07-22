@@ -14,11 +14,11 @@
     "Azure Pipelines"
   ],
   "icons": {
-    "default": "images/extension-icon.png"
+    "default": "filing-cabinet.png"
   },
   "files": [
     {
-      "path": "buildAndReleaseTask"
+      "path": ""
     }
   ],
   "contributions": [
