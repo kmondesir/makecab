@@ -9,16 +9,16 @@
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
-  "description": "Tools for building/releasing with Makecab. Includes one build/release task.",
+  "description": "Tool for creating cabinet files. Includes one build/release task.",
   "categories": [
     "Azure Pipelines"
   ],
   "icons": {
-    "default": "filing-cabinet.png"
+    "default": "images/filing-cabinet.png"
   },
   "files": [
     {
-      "path": ""
+      "path": "buildAndReleaseTask"
     }
   ],
   "contributions": [
