@@ -1,5 +1,5 @@
 {
-  "id": "9E9DB38A-B40B-4C13-B7F0-31031C894C22",
+  "id": "9683b3d4-00a7-4caf-9abc-909a0c8de86e",
   "name": "MakeCab",
   "friendlyName": "Make Microsoft Cabinet files",
   "description": "Creates a cabinet file using Microsoft's builtin makecab command",
@@ -26,43 +26,28 @@
   
   "inputs": [
     {
-      "name": "SourceFolder",
+      "name": "source",
       "type": "filePath",
       "label": "Source Folder",
       "defaultValue": "",
-      "required": false,
-      "helpMarkDown": "The source folder that the copy pattern(s) will be run from.  Empty is the root of the repo.  Use [variables](https://go.microsoft.com/fwlink/?LinkID=550988) if files are not in the repo. Example: $(agent.builddirectory)"
-    },
-    {
-      "name": "TargetFolder",
-      "type": "string",
-      "label": "Target Folder",
-      "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Target folder or UNC path files will copy to. You can use [variables](http://go.microsoft.com/fwlink/?LinkID=550988). Example: $(build.artifactstagingdirectory)"
+      "helpMarkDown": "The source with all items will be used to create the cabinet file. Use [variables](https://go.microsoft.com/fwlink/?LinkID=550988) if files are not in the repo. Example: $(agent.builddirectory)"
     },
     {
-      "name": "preserveTimestamp",
-      "type": "boolean",
-      "label": "Preserve Target Timestamp",
-      "defaultValue": "false",
+      "name": "destination",
+      "type": "filePath",
+      "label": "Target Folder",
+      "defaultValue": "$(currentDirectory)",
       "required": false,
-      "helpMarkDown": "Using the original source file, preserve the target file timestamp.",
-      "groupName": "advanced"
+      "helpMarkDown": "Target folder to save the resulting cabinet file. You can use [variables](http://go.microsoft.com/fwlink/?LinkID=550988). Example: $(build.artifactstagingdirectory)"
     }
   ],
-  "instanceNameFormat": "Copy Files to: $(TargetFolder)",
+  "instanceNameFormat": "Create cabinet file from $(Source) directory",
   "execution": {
-    "Node": {
-      "target": "copyfiles.js",
-      "argumentFormat": ""
+    "PowerShell": {
+      "target": "$(currentDirectory)\\task.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
     }
-  },
-  "messages": {
-    "FoundNFiles": "found %d files",
-    "CleaningTargetFolder": "Cleaning target folder: %s",
-    "FileAlreadyExistAt": "File %s already exist at %s",
-    "CopyingTo": "Copying %s to %s",
-    "TargetIsDir": "Unable to copy file %s to %s. The target path already exists as a directory."
   }
 }
